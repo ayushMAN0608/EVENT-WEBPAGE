@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IEM Events | CSE (AIML)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- External CSS Connection -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav">
+    <div class="wrap">
+      <a href="#top" class="brand">
+        <span>IEM Events</span>
+      </a>
+      <nav class="links" id="links">
+        <a href="#events">Events</a>
+        <a href="#register">Register</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">Contact</a>
+      </nav>
+      <button class="ico" id="theme" aria-label="Toggle dark mode">☾</button>
+      <button class="ico burger" id="burger" aria-expanded="false" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <h1>Innovate. Build. Compete.</h1>
+        <p>Official technical events portal for the Department of Computer Science & Engineering (AIML) at Institute of Engineering & Management.</p>
+        <div class="cta">
+          <a href="#register" class="btn sun">Register Now</a>
+          <a href="#events" class="btn alt">Explore Events</a>
+        </div>
+
+        <div class="big">
+          <small>COUNTDOWN TO IEMPACT</small>
+          <div class="digits">
+            <div><b data-u="d">00</b><span>Days</span></div>
+            <div><b data-u="h">00</b><span>Hours</span></div>
+            <div><b data-u="m">00</b><span>Minutes</span></div>
+            <div><b data-u="s">00</b><span>Seconds</span></div>
+          </div>
+          <div class="clock" id="clock">Loading IST time...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events">
+      <div class="wrap">
+        <div class="head">
+          <h2>Flagship Events</h2>
+          <p>Select an event below to view schedules, venues, and live countdowns.</p>
+        </div>
+
+        <div class="stage">
+          <div class="picks">
+            <button class="pick" data-ev="iempact" aria-pressed="true">
+              <b>IEMPACT</b>
+              <span>16 January · Flagship Fest</span>
+            </button>
+            <button class="pick" data-ev="innovacion" aria-pressed="false">
+              <b>INNOVACION</b>
+              <span>Date TBD · Tech Exhibition</span>
+            </button>
+          </div>
+          <div class="panel" id="panel"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="alt-bg">
+      <div class="wrap">
+        <div class="head">
+          <h2>Student Registration</h2>
+          <p>Verify your Gmail address to unlock the event registration form.</p>
+        </div>
+
+        <ol class="steps" id="steps">
+          <li class="on">1. Verify Gmail</li>
+          <li>2. Student Details</li>
+          <li>3. Confirmation</li>
+        </ol>
+
+        <div class="form">
+          <!-- Step 1: Email & OTP -->
+          <div id="s1">
+            <div class="f">
+              <label for="gm">Gmail Address</label>
+              <div class="row">
+                <input type="email" id="gm" placeholder="yourname@gmail.com" required>
+                <button type="button" class="btn" id="send">Send OTP</button>
+              </div>
+              <span class="er" id="e-gm"></span>
+            </div>
+
+            <div id="otpBox" hidden>
+              <p class="note">Enter the 6-digit code sent to <b id="sentTo"></b></p>
+              <div class="otp" id="otp"></div>
+              <button type="button" class="btn" id="verify">Verify Code</button>
+            </div>
+
+            <p class="msg" id="m1"></p>
+          </div>
+
+          <!-- Step 2: Details Form -->
+          <form id="s2" hidden novalidate>
+            <div class="f">
+              <label for="vm">Verified Gmail</label>
+              <input type="email" id="vm" readonly>
+            </div>
+
+            <div class="two">
+              <div class="f">
+                <label for="nm">Full Name</label>
+                <input type="text" id="nm" placeholder="John Doe" required>
+                <span class="er"></span>
+              </div>
+              <div class="f">
+                <label for="rl">Enrollment no. (12 digits)</label>
+                <input type="text" id="rl" maxlength="12" placeholder="1202300200" required>
+                <span class="er"></span>
+              </div>
+            </div>
+
+            <div class="two">
+              <div class="f">
+                <label for="dp">Department</label>
+                <select id="dp" required>
+                  <option value="">Select Department</option>
+                  <option value="CSE (AIML)">CSE (AIML)</option>
+                  <option value="CSE">CSE</option>
+                  <option value="IT">IT</option>
+                  <option value="ECE">ECE</option>
+                </select>
+                <span class="er"></span>
+              </div>
+              <div class="f">
+                <label for="ph">Phone Number (10 digits)</label>
+                <input type="tel" id="ph" maxlength="10" placeholder="9876543210" required>
+                <span class="er"></span>
+              </div>
+            </div>
+
+            <fieldset class="f" id="gd">
+              <legend>Gender</legend>
+              <div class="pills">
+                <label><input type="radio" name="g" value="Male"><span>Male</span></label>
+                <label><input type="radio" name="g" value="Female"><span>Female</span></label>
+                <label><input type="radio" name="g" value="Other"><span>Other</span></label>
+              </div>
+              <span class="er"></span>
+            </fieldset>
+
+            <div class="f">
+              <label for="ev">Select Event</label>
+              <select id="ev" required>
+                <option value="">Choose an event</option>
+                <option value="IEMPACT">IEMPACT</option>
+                <option value="INNOVACION">INNOVACION</option>
+              </select>
+              <span class="er"></span>
+            </div>
+
+            <div class="cta">
+              <button type="submit" class="btn">Complete Registration</button>
+              <button type="button" class="lnk" id="change">Change Gmail</button>
+            </div>
+          </form>
+
+          <!-- Step 3: Confirmation -->
+          <div id="s3" class="done" hidden>
+            <h3>Registration Confirmed!</h3>
+            <p class="note">Your entry has been recorded for the upcoming event.</p>
+            <dl id="sum"></dl>
+            <button type="button" class="btn alt" id="again">Register Another</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+      <div class="wrap">
+        <div class="head">
+          <h2>Event Highlights</h2>
+          <p>Moments from past hackathons, workshops, and tech exhibitions.</p>
+        </div>
+
+        <div class="filters">
+          <button class="fc" data-c="all" aria-pressed="true">All</button>
+          <button class="fc" data-c="hackathon" aria-pressed="false">Hackathons</button>
+          <button class="fc" data-c="workshop" aria-pressed="false">Workshops</button>
+        </div>
+
+        <div class="grid">
+          <figure data-c="hackathon">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Hackathon coding">
+            <figcaption>24-Hour AI Hackathon</figcaption>
+          </figure>
+          <figure data-c="workshop">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" alt="Tech conference">
+            <figcaption>Keynote Speaker Session</figcaption>
+          </figure>
+          <figure data-c="hackathon">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" alt="Team collaboration">
+            <figcaption>Innovacion Project Showcase</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- About & Contact Section -->
+    <section id="about" class="alt-bg">
+      <div class="wrap cols">
+        <div>
+          <div class="head">
+            <h2>Department of CSE (AIML)</h2>
+            <p>Fostering innovation in Artificial Intelligence, Machine Learning, and software engineering at IEM Kolkata.</p>
+          </div>
+          <address>
+            <b>Campus Address</b><br>
+            Gurukul, Y-12, Block EP, Sector V, Salt Lake Electronics Complex<br>
+            Kolkata, West Bengal 700091
+          </address>
+        </div>
+
+        <dl class="coord">
+          <div>
+            <dt>Event Coordinator</dt>
+            <dd>Student Committee<span>CSE (AIML) Department</span></dd>
+          </div>
+          <div>
+            <dt>Venue</dt>
+            <dd>Main Auditorium<span>IEM Salt Lake Campus</span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 IEM Events · Dept. of CSE (AIML)</span>
+      <span>Built for IEMPACT &amp; INNOVACION</span>
+    </div>
+  </footer>
+
+  <!-- External JavaScript Connection -->
+  <script src="document.js"></script>
+</body>
+</html>
